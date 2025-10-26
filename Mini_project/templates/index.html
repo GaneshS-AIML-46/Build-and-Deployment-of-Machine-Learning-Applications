@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pneumonia Detection AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-lungs"></i>
+                <h1>Pneumonia Detection AI</h1>
+            </div>
+            <p class="subtitle">Advanced chest X-ray analysis powered by deep learning</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Upload Chest X-ray</h3>
+                        <p>Drag and drop your X-ray image here or click to browse</p>
+                        <input type="file" id="fileInput" accept="image/*" hidden>
+                        <button class="browse-btn" onclick="document.getElementById('fileInput').click()">
+                            Browse Files
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-preview" id="imagePreview" style="display: none;">
+                    <img id="previewImg" src="" alt="Preview">
+                    <div class="image-actions">
+                        <button class="analyze-btn" id="analyzeBtn">
+                            <i class="fas fa-search"></i>
+                            Analyze X-ray
+                        </button>
+                        <button class="clear-btn" id="clearBtn">
+                            <i class="fas fa-times"></i>
+                            Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-card">
+                    <div class="result-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Analysis Results</h3>
+                    </div>
+                    <div class="result-content">
+                        <div class="diagnosis" id="diagnosis">
+                            <span class="diagnosis-label">Diagnosis:</span>
+                            <span class="diagnosis-value" id="diagnosisValue">-</span>
+                        </div>
+                        <div class="confidence" id="confidence">
+                            <span class="confidence-label">Confidence:</span>
+                            <span class="confidence-value" id="confidenceValue">-</span>
+                        </div>
+                        <div class="risk-indicator" id="riskIndicator">
+                            <span class="risk-label">Risk Level:</span>
+                            <span class="risk-value" id="riskValue">-</span>
+                        </div>
+                        <div class="certainty" id="certaintyIndicator">
+                            <span class="certainty-label">Certainty:</span>
+                            <span class="certainty-value" id="certaintyValue">-</span>
+                        </div>
+                        <div class="model-info" id="modelInfo">
+                            <span class="model-label">Model:</span>
+                            <span class="model-value" id="modelValue">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing X-ray image...</p>
+            </div>
+        </main>
+
+        <footer>
+            <p><i class="fas fa-info-circle"></i> This tool is for educational purposes only. Always consult a medical professional for diagnosis.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
